@@ -2,4 +2,4 @@ theme: jekyll-theme-cayman
 title: An Attention-driven Hierarchical Multi-scale Representation for Visual Recognition
 description: The 32nd British Machine Vision Conference 2021 (BMVC 2021)
 github:
-  is_project_page: true
+  is_project_page: false
