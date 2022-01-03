@@ -17,7 +17,7 @@ Extended version of the accepted paper in [ArXiv](https://arxiv.org/pdf/2110.121
 
 ### Bibtex
 ```markdown
-@inproceedings{behera2021context,
+@inproceedings{wharton2021attention,
   title={An Attention-driven Hierarchical Multi-scale Representation for Visual Recognition},
   author={ Wharton, Zachary and Behera, Ardhendu and Bera, Asish},
   booktitle={The 32nd British Machine Vision Conference 2021 (BMVC 2021)},
