@@ -1,5 +1,5 @@
 theme: jekyll-theme-cayman
-title: Context-aware Attentional Pooling (CAP) for Fine-grained Visual Classification
-description: The Thirty-Fifth AAAI Conference on Artificial Intelligence 2021
+title: An Attention-driven Hierarchical Multi-scale Representation for Visual Recognition
+description: The 32nd British Machine Vision Conference 2021 (BMVC 2021)
 github:
   is_project_page: false
