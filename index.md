@@ -1,4 +1,5 @@
-## Zachary Wharton, Ardhendu Behera and Asish Bera
+## An Attention-driven Hierarchical Multi-scale Representation for Visual Recognition
+**Zachary Wharton, Ardhendu Behera and Asish Bera**<br>
 **Department of Computer Science, Edge Hill University, United Kingdom**
 
 ### Abstract
