@@ -1,33 +1,28 @@
-## Ardhendu Behera, Zachary Wharton, Pradeep Hewage and Asish Bera
+## Zachary Wharton, Ardhendu Behera and Asish Bera
 **Department of Computer Science, Edge Hill University, United Kingdom**
 
 ### Abstract
-Deep convolutional neural networks (CNNs) have shown a strong ability in mining discriminative object pose and parts information for image recognition. For fine-grained recognition, context-aware rich feature representation of object/scene plays a key role since it exhibits a significant variance in the same subcategory and subtle variance among different subcategories. Finding the subtle variance that fully characterizes the object/scene is not straightforward. To address this, we propose a novel context-aware attentional pooling (CAP) that effectively captures subtle changes via sub-pixel gradients, and learns to attend informative integral regions and their importance in discriminating different subcategories without requiring the bounding-box and/or distinguishable part annotations. We also introduce a novel feature encoding by considering the intrinsic consistency between the informativeness of the integral regions and their spatial structures to capture the semantic correlation among them. Our approach is simple yet extremely effective and can be easily applied on top of a standard classification backbone network. We evaluate our approach using six state-of-the-art (SotA) backbone networks and eight benchmark datasets. Our method significantly outperforms the SotA approaches on six datasets and is very competitive with the remaining two.
+Convolutional Neural Networks (CNNs) have revolutionized the understanding of visual content. This is mainly due to their ability to break down an image into smaller pieces, extract multi-scale localized features and compose them to construct highly expressive representations for decision making. However, the convolution operation is unable to capture long-range dependencies such as arbitrary relations between pixels since it operates on a fixed-size window. Therefore, it may not be suitable for discriminating subtle changes (e.g. fine-grained visual recognition). To this end, our proposed method captures the high-level long-range dependencies by exploring Graph Convolutional Networks (GCNs), which aggregate information by establishing relationships among multiscale hierarchical regions. These regions consist of smaller (closer look) to larger (far look), and the dependency between regions is modeled by an innovative attention-driven message propagation, guided by the graph structure to emphasize the neighborhoods of a given region. Our approach is simple yet extremely effective in solving fine-grained and generic visual classification problems. It outperforms the state-of-the-art with a significant margin on three and is very competitive on another two datasets.
 
-### Context-aware Attentional Pooling (CAP)
-Our CAP is designed to encode spatial arrangements and visual appearance of the parts effectively. The module takes input as a convolutional feature from a base CNN and then _learns to emphasize_ the latent representation of multiple integral regions (varying coarseness) to describe hierarchies within objects and parts. Each region has an anchor in the feature map, and thus many regions have the same anchor due to the integral characteristics. These integral regions are then fed into a recurrent network (e.g. LSTM) to capture their spatial arrangements, and is inspired by the visual recognition literature, which suggests that humans do not focus their attention on an entire scene at once. Instead, they focus sequentially by attending different parts to extract relevant information. A vital characteristic of our CAP is that it generates a new feature map by focusing on a given region conditioned on all other regions and itself.
+### Attention-driven Hierarchical Representation
+To discriminate subtle variations in visual features, the hierarchical connection between regions should be considered so that the larger regions (_see from far_) pay more attention to the high-level shape and appearance, and the smaller ones (_closer look_) concentrate on detailed texture and parts information to capture subtle variations. As a result, it can provide a rich representation by jointly learning meaningful complementary information from multi-scale hierarchical regions that apply to both FGVC (_coarse-to-fine_) and generic visual classification (_fine-to-coarse_). We achieve this by a novel _multi-scale hierarchical representation learning_ to boost the recognition accuracy by jointly integrating local (within a region) and non-local (between regions) information to capture long-range dependencies by exploring the graph structure to propagate information between regions within a layer, as well as between layers in the hierarchical structure.
 
-![Image](diagram.jpg)
-**High-level illustration of our model (left). The detailed architecture of our novel CAP (right).**
-
-![Image](diagram2.jpg)
-**Learning pixel-level relationships from the convolutional feature map of size _W x H x C_. b) CAP using integral regions to capture both self and neighborhood contextual information. c) Encapsulating spatial structure of the integral regions using an LSTM. d) Classification by learnable aggregation of hidden states of the LSTM.**
+![Image](Multi_scale.jpg)
+**Our Model Architecture: a) CNN backbone as an encoder followed by an up-sampler to increase spatial resolution. b) Layer-wise graph representation using multi-scale regions to capture long-range dependencies using GCN’s aggregation scheme in which the feature of a node is computed by recursively aggregating and transforming features from its neighboring nodes. c) Graph coarsening by grouping the similar nodes using spectral clustering, followed by cluster-level predictions and their gated attentional aggregation for making a final decision.**
 
 ### Paper and Supplementary Information
-Extended version of the accepted paper in [ArXiv](https://arxiv.org/abs/2101.06635).
+Extended version of the accepted paper in [ArXiv](https://arxiv.org/pdf/2110.12178).
 
-[Supplementary Document](AAAI_Supplementary.pdf)
-
-[Source code](https://github.com/ArdhenduBehera/cap)
+[Supplementary Document](BMVC2021-Supplementary.pdf)
 
 ### Bibtex
 ```markdown
 @inproceedings{behera2021context,
-  title={Context-aware Attentional Pooling (CAP) for Fine-grained Visual Classification},
-  author={Behera, Ardhendu and Wharton, Zachary and Hewage, Pradeep and Bera, Asish},
-  booktitle={The Thirty-Fifth AAAI Conference on Artificial Intelligence},
+  title={An Attention-driven Hierarchical Multi-scale Representation for Visual Recognition},
+  author={ Wharton, Zachary and Behera, Ardhendu and Bera, Asish},
+  booktitle={The 32nd British Machine Vision Conference 2021 (BMVC 2021)},
   year={2021},
-  organization={AAAI}
+  organization={BMVA}
 }
 ```
 
